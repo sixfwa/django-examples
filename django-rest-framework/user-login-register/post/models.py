@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from datetime import datetime
 
 
 class Post(models.Model):
@@ -9,6 +10,7 @@ class Post(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
     )
+    published = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.content

@@ -1,0 +1,79 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <h1>Register</h1>
+        {% include 'partials/_alert.html' %}
+        <form action="{% url 'register' %}" method="POST">
+            {% csrf_token %}
+            <fieldset>
+                <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input
+                    type="text"
+                    name="first_name"
+                    class="form-control"
+                    placeholder="Enter first name"
+                    required
+                />
+                </div>
+                <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input
+                    type="text"
+                    name="last_name"
+                    class="form-control"
+                    placeholder="Enter last name"
+                    required
+                />
+                </div>
+                <div class="form-group">
+                <label for="username">Username</label>
+                <input
+                    type="text"
+                    name="username"
+                    class="form-control"
+                    placeholder="Enter username"
+                    required
+                />
+                </div>
+                <div class="form-group">
+                <label for="email">Email address</label>
+                <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Enter email"
+                    name="email"
+                    required
+                />
+                <small class="form-text text-muted"
+                    >We'll never share your email with anyone else.</small
+                >
+                </div>
+                <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Password"
+                    name="password"
+                    required
+                />
+                </div>
+                <div class="form-group">
+                <label for="password">Re-enter Password</label>
+                <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Re-enter Password"
+                    name="password2"
+                    required
+                />
+                </div>
+                </fieldset>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </fieldset>
+            </form>
+    </div>
+</div>
+
+{% endblock %}
