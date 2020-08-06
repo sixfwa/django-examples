@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+  <div class="jumbotron">
+    {% include 'partials/_alert.html' %}
+    <h2 class="display-3">Hello, {{ username }}!</h2>
+    <p class="lead">
+      This is a simple hero unit, a simple jumbotron-style component for calling
+      extra attention to featured content or information.
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10 mx-auto">
+    <form action="{% url 'post' %}" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="exampleTextarea"><h3>Update your status...</h3></label>
+        <textarea
+          class="form-control border border-primary"
+          rows="2"
+          spellcheck="false"
+          style="border-color: black;"
+          name="content"
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Post</button>
+    </form>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 20px;">
+{% for post in posts %}
+    <div class="col-md-10 mx-auto">
+        <div class="card border-primary mb-3">
+      <div class="card-header">{{ post.author }}</div>
+      <div class="card-body">
+        <p class="card-text">{{ post.content }}</p>
+      </div>
+    </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

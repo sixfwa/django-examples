@@ -13,10 +13,10 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, "You are now logged in")
-            return redirect("index")
+            return redirect("feed")
         else:
             messages.error(request, "Invalid Credentials")
-            return redirect("feed")
+            return redirect("login")
     else:
         return render(request, 'accounts/login.html')
 
@@ -44,7 +44,7 @@ def register(request):
                 )
                 auth.login(request, user)
                 messages.success(request, "You are now logged in")
-                return redirect("index")
+                return redirect("feed")
         else:
             messages.error(request, "Passwords do not match")
             return redirect("register")
